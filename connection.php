@@ -1,4 +1,3 @@
-
 <?php
 // Παίρνουμε το URL από το Render, αν υπάρχει
 $db_url = getenv("DATABASE_URL");
