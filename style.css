@@ -1,0 +1,666 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Container Styles */
+.container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: auto; /* Για να αποφευχθεί η υπέρβαση του περιεχομένου */
+}
+
+/* Form Styles */
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.form label {
+    font-weight: bold;
+    margin-bottom: -10px;
+}
+
+.form input[type="text"],
+.form input[type="file"],
+.form select,
+.form textarea {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.form textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    table-layout: auto; /* Για να επιτρέπεται η αυτόματη προσαρμογή πλάτους */
+}
+
+table th, table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+table th {
+    background-color: #002147;
+    color: white;
+}
+
+table tr:hover {
+    background-color: #f5f5f5;
+}
+
+/* Button Styles */
+.btn {
+    padding: 10px 15px;
+    background-color: #002147;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    text-decoration: none;
+    display: inline-block;
+    margin: 5px 0;
+}
+
+.btn:hover {
+    background-color: #0021479f;
+}
+
+.btn-secondary {
+    background-color: #95a5a6;
+}
+
+.btn-secondary:hover {
+    background-color: #7f8c8d;
+}
+
+.btn-add {
+    background-color: #377752;
+}
+
+.btn-add:hover {
+    background-color: #228f50;
+}
+
+.search-btn, .export-btn {
+    background-color: #002147;
+    color: white;
+}
+
+.clear-btn {
+    background-color: #460b0b;
+    color: white;
+}
+
+.clear-btn:hover {
+    background-color: #c22d1d;
+}
+
+button[type="submit"] {
+    padding: 10px 15px;
+    background-color: #460b0b;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    margin: 5px 0;
+}
+
+button[type="submit"]:hover {
+    background-color: #002147;
+}
+
+/* Search and Filter Styles */
+.search-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 20px 0;
+    align-items: center;
+    width: 100%;
+}
+
+.search-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+}
+
+.search-input {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.export-container {
+    display: flex;
+    gap: 10px;
+    margin-left: auto;
+}
+
+.export-select {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+/* Message Styles */
+.error {
+    color: #e74c3c;
+    background-color: #fadbd8;
+    padding: 10px;
+    border-radius: 4px;
+    margin: 10px 0;
+}
+
+.success {
+    color: #27ae60;
+    background-color: #d5f5e3;
+    padding: 10px;
+    border-radius: 4px;
+    margin: 10px 0;
+}
+
+#responseMessage {
+    margin: 15px 0;
+}
+
+/* Loading Indicator */
+.loading {
+    text-align: center;
+    padding: 20px;
+    color: #7f8c8d;
+}
+
+/* PDF Link Styles */
+.pdf-link {
+    color: #e74c3c;
+    text-decoration: none;
+}
+
+.pdf-link:hover {
+    text-decoration: underline;
+}
+
+/* Login Page Styles */
+.login {
+    width: 300px;
+    margin: 100px auto;
+    padding: 20px;
+    background: #8e9bbc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.login h2 {
+    margin-bottom: 20px;
+    color: #460b0b;
+}
+
+.login form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.login input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.login button {
+    padding: 10px;
+    background-color: #002147;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.login button:hover {
+    background-color: #002147;
+}
+
+/* Homepage Styles */
+.homepage {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.homepage a {
+    display: block;
+    padding: 10px;
+    margin: 5px 0;
+    background-color: #460b0b;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.homepage a:hover {
+    background-color: #002147;
+}
+/* Κύριο Μενού Πλοήγησης */
+
+/* Ειδικά στυλ για h1 headers */
+.main {
+    text-align: center;
+    margin: 30px 0;
+    padding: 20px;
+}
+
+.main h1 {
+    color: #460b0b;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    position: relative;
+    display: inline-block;
+}
+
+/* Optional: Γραμμή διαχωρισμού κάτω από τον τίτλο */
+.main h1::after {
+    content: "";
+    display: block;
+    width: 80px;
+    height: 3px;
+    background: #002147;
+    margin: 15px auto 0;
+}
+
+/* Κύριο Μενού Πλοήγησης - Σταθερό */
+.main-menu {
+    position: fixed;  /* Κάνει το menu σταθερό */
+    top: 0;           /* Τοποθετείται στην κορυφή */
+    left: 0;          /* Αριστερά */
+    width: 100%;      /* Πλήρες πλάτος */
+    background-color: #460b0b;
+    padding: 10px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;    /* Βεβαιώνεται ότι είναι πάνω από άλλα στοιχεία */
+}
+
+/* Προσαρμογή του περιεχομένου για να μην επικαλύπτεται από το fixed menu */
+body {
+    padding-top: 60px;  /* Ίδιο με το ύψος του menu */
+    padding-bottom: 60px; /* Για το footer */
+}
+.main-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.main-menu li {
+    margin: 0 15px;
+}
+
+.main-menu a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 8px 15px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.main-menu a:hover {
+    background-color: #002147;
+}
+/* Dropdown Μενού */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 4px;
+}
+
+.dropdown-content a {
+    color: #333;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s;
+}
+
+.dropdown-content a:hover {
+    background-color: #002147;
+    color: white;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropbtn {
+    cursor: pointer;
+}
+/* Footer */
+.site-footer {
+    background-color: #460b0b;
+    color: white;
+    text-align: center;
+    padding: 6px 0;
+    margin-top: 20px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.site-footer p {
+    margin: 0;
+    font-size: 14px;
+}
+
+/* Για να μην επικαλύπτεται το footer με το περιεχόμενο */
+body {
+    padding-bottom: 60px; /* Προσαρμόστε ανάλογα με το ύψος του footer */
+}
+
+
+/* Utility Classes */
+.text-center {
+    text-align: center;
+}
+
+.mt-20 {
+    margin-top: 20px;
+}
+
+.mb-20 {
+    margin-bottom: 20px;
+}
+
+/* Προσθήκες για τις νέες σελίδες */
+
+/* Στυλ για τη σελίδα επεξεργασίας προφίλ */
+#editProfileForm {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#editProfileForm label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+#editProfileForm input[type="text"],
+#editProfileForm input[type="email"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+/* Στυλ για τη σελίδα διαχείρισης διπλωματικής */
+.thesis-management {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.thesis-management strong {
+    color: #460b0b;
+}
+
+.thesis-management ul {
+    padding-left: 20px;
+}
+
+/* Στυλ για τη σελίδα επιλογής επιτροπής */
+.committee-selection {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.committee-selection label {
+    display: block;
+    padding: 8px 0;
+}
+
+/* Στυλ για τη σελίδα υποβολής πρόχειρου */
+.draft-submission {
+    max-width: 700px;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.draft-submission textarea {
+    width: 100%;
+    min-height: 100px;
+}
+
+/* Στυλ για τη σελίδα προβολής τελικής διπλωματικής */
+.thesis-view {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Στυλ για μηνύματα κατάστασης */
+.message {
+    padding: 10px 15px;
+    margin: 15px 0;
+    border-radius: 4px;
+}
+
+.message.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Στυλ για επιστροφή στη σελίδα */
+.back-link {
+    display: inline-block;
+    margin-top: 20px;
+    color: #460b0b;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+/* Στυλ για φόρμες */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+/* Στυλ για κουμπιά */
+.action-button {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #460b0b;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.action-button:hover {
+    background-color: #002147;
+}
+
+/* Στυλ για τις σημειώσεις */
+.note {
+    background-color: #f8f9fa;
+    border-left: 4px solid #460b0b;
+    padding: 10px 15px;
+    margin-bottom: 15px;
+    border-radius: 0 4px 4px 0;
+}
+
+.note-meta {
+    color: #6c757d;
+    font-size: 0.9em;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.note-content {
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.delete-note-btn {
+    background: none;
+    border: none;
+    color: #dc3545;
+    cursor: pointer;
+    padding: 0 5px;
+    font-size: 0.9em;
+}
+
+.delete-note-btn:hover {
+    text-decoration: underline;
+}
+
+.date {
+    font-style: italic;
+}
+
+/* Responsive προσθήκες */
+@media (max-width: 768px) {
+    #editProfileForm,
+    .thesis-management,
+    .committee-selection,
+    .draft-submission,
+    .thesis-view {
+        width: 95%;
+        padding: 15px;
+    }
+}
+/* Responsive Μενού */
+@media (max-width: 768px) {
+    .main-menu ul {
+        flex-direction: column;
+        align-items: center;
+    }
+    .main-menu li {
+        margin: 5px 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        padding: 15px;
+    }
+    
+    .search-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .export-container {
+        margin-left: 0;
+        width: 100%;
+    }
+    
+    table {
+        display: block;
+        overflow-x: auto;
+    }
+    
+    .login {
+        width: 90%;
+    }
+}
+

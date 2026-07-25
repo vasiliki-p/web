@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Κύριο Μενού</title>
+    <link rel="stylesheet" href="style.css">
+<body>
+    <!-- Κύριο Μενού -->
+    <nav class="main-menu">
+        <ul>
+            
+            <!-- Μενού για Καθηγητές -->
+            <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'professor'): ?>
+                <li><a href="professor.php">Αρχική</a></li>
+                <!-- <li><a href="index1.php"></a></li>-->
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">Διπλωματικές</a>
+                    <div class="dropdown-content">
+                        <a href="list_all.php">Όλες</a>
+                        <a href="list_pros_anathesis.php">Προς Ανάθεση</a>
+                        <a href="list_ypo_anathesis.php">Υπό Ανάθεση</a>
+                        <a href="list_energes.php">Ενεργές</a>
+                        <a href="list_ypo_exetasi.php">Υπό Εξέταση</a>
+                        <a href="list_peratwmenes.php">Περατωμένες</a>
+                        <a href="list_akyrwmenes.php">Ακυρωμένες</a>
+
+                    </div>
+                </li>
+                <li><a href="create_theme.php">Δημιουργία Θέματος</a></li>
+                <li><a href="search_students.php">Αναζήτηση Φοιτητών</a></li>
+                <li><a href="list_invitations.php">Προσκλήσεις</a></li>
+            <?php endif; ?>
+            
+            <!-- Μενού για Φοιτητές -->
+            <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'student'): ?>
+                <li><a href="student.php">Αρχική</a></li>
+                <li><a href="student_view.php">Προβολή Θέματος</a></li>
+                <li><a href="manage_thesis.php">Διαχείριση Διπλωματικής</a></li>
+                <li><a href="edit_profile.php">Προφίλ</a></li>
+            <?php endif; ?>
+            
+            <!-- Μενού για Γραμματείες -->
+            <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'secretary'): ?>
+                <li><a href="secretary.php">Αρχική</a></li>
+                <li><a href="provoli_dipl_erg.php"> Προβολή Διπλωματικών Εργασιών </a></li>
+                <li><a href="jsoninsert.php">Εισαγωγή Αρχείου Json</a></li>
+                <li><a href="diaxeirishdipl.php">Διαχείριση Διπλωματικών Εργασιών</a></li>
+            <?php endif; ?>
+            
+            <!-- Κοινό για όλους τους συνδεδεμένους χρήστες -->
+            <?php if (isset($_SESSION['user_id'])): ?>
+                <li><a href="logout.php">Αποσύνδεση</a></li>
+            <?php else: ?>
+                <li><a href="login.php">Σύνδεση</a></li>
+            <?php endif; ?>
+        </ul>
+    </nav>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <p><b>2024-2025 - Προγραμματισμός & Συστήματα στον Παγκόσμιο Ιστό</b></p>
+    </footer>
+</body>
+</html>
