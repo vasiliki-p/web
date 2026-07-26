@@ -1,0 +1,31 @@
+# 1. Προσωρινά αρχεία Λειτουργικού Συστήματος
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+ehthumbs_vista.db
+Thumbs.db
+
+# 2. Αρχεία Ρυθμίσεων από Code Editors
+.vscode/
+.idea/
+*.suo
+*.sw?
+
+# 3. Αρχεία Καταγραφής (Logs)
+*.log
+
+# 4. Φάκελος με ανεβασμένα αρχεία χρηστών (Αγνοεί όλα τα PDFs)
+uploads/*
+# (Προαιρετικά: Κρατάει τον φάκελο uploads ζωντανό στο Git, αλλά άδειο)
+!uploads/.gitkeep
+
+# 5. Ευαίσθητα Αρχεία (Κωδικοί & Βάση Δεδομένων)
+connection.php
+new.sql
+
+# 6. Αρχεία με πιθανά προσωπικά δεδομένα
+professorjson.json
+studentjson.json
