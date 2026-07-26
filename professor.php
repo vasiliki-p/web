@@ -22,7 +22,7 @@ include 'menu.html';
 
 <a name="top">	
 <div class="homepage" id="myhomepage">
-        <a href="index1.php"> Προβολή και Δημιουργία θεμάτων προς ανάθεση</a><br>
+        <a href="index.php"> Προβολή και Δημιουργία θεμάτων προς ανάθεση</a><br>
         <a href="search_students.php">Αρχική ανάθεση</a><br>
         <a href="list_all.php">Λίστα διπλωματικών</a><br>
         <a href="list_invitations.php">Προσκλήσεις συμμετοχής σε τριμελή</a><br>

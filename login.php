@@ -1,25 +1,7 @@
-<?php include 'connection.php';
+<?php 
 session_start();
-?>
-
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Login</title>
-        <link rel="stylesheet" href="style.css">
-     </head>
-    
-    <body>
-        <div class="login">
-            <h2>Σύνδεση</h2>
-            <form id="Login" name="Login" method="POST"> 
-                <input type="text" id="Όνομα Χρήστη" name="username" placeholder="Όνομα Χρήστη" required>
-                <input type="password" id="Κωδικός" name="password" placeholder="Κωδικός" required>
-                <button type="submit">Είσοδος</button>
-            </form>
-
-
-        <?php 
+include 'connection.php';
+ 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if (isset($_POST['username'],$_POST['password'])){
                 $username = $_POST['username'];
@@ -60,7 +42,23 @@ session_start();
             }
         }
         ?>
-        
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Login</title>
+        <link rel="stylesheet" href="style.css">
+     </head>
+    
+    <body>
+        <div class="login">
+            <h2>Σύνδεση</h2>
+            <form id="Login" name="Login" method="POST"> 
+                <input type="text" id="Όνομα Χρήστη" name="username" placeholder="Όνομα Χρήστη" required>
+                <input type="password" id="Κωδικός" name="password" placeholder="Κωδικός" required>
+                <button type="submit">Είσοδος</button>
+            </form>
+      
     </div>
     <p style="position: fixed; bottom: 0; width: 100%; text-align: center;"><b>2024-2025 - Προγραμματισμός & Συστήματα στον Παγκόσμιο Ιστό</b></p>
     </body>
