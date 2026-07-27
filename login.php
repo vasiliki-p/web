@@ -1,21 +1,20 @@
 <?php 
 session_start();
 include 'connection.php';
+
+$error_msg = ""; 
  
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['username'],$_POST['password'])){
         $username = $_POST['username'];
         $password = $_POST['password'];
 
-        // Ερώτημα για έλεγχο εάν ο χρήστης υπάρχει ήδη στη βάση
         $stmt = $conn->prepare("SELECT * FROM users WHERE username=? ");
         $stmt->bind_param("s", $username);
         $stmt->execute();
         $result = $stmt->get_result();
         
-        // Εισαγωγή στοιχείων χρήστη αν δεν υπάρχει ήδη
         if ($result->num_rows > 0) {
-            // Υπάρχει εγγραφή με αυτό το όνομα χρήστη
             $user = $result->fetch_assoc();
             $user_id = $user['user_id'];
             $stored_password = $user['password']; 
@@ -34,10 +33,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 }
                 exit();
             } else {
-                echo "<div style='color: red; text-align: center; margin-top: 10px;'>Λανθασμένο όνομα χρήστη ή λανθασμένος κωδικός πρόσβασης</div>";
+                $error_msg = "Λανθασμένο όνομα χρήστη ή κωδικός"; 
             }
         } else {
-            echo "<div style='color: red; text-align: center; margin-top: 10px;'>Ο χρήστης δεν υπάρχει</div>";
+            $error_msg = "Ο χρήστης δεν υπάρχει"; 
         }
     }
 }
@@ -49,36 +48,50 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <title>Login - Thesis Management</title>
         <link rel="stylesheet" href="style.css">
         <style>
-            /* Extra styles for the demo accounts box */
+            /* Κεντράρισμα της σελίδας με ασφαλές περιθώριο από το footer */
+            body {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                min-height: 100vh;
+                margin: 0;
+                padding-bottom: 60px; /* Αφήνει χώρο για το footer */
+                box-sizing: border-box;
+            }
+
+            /* Πιο συμπαγές demo box για να μην "σπρώχνει" την κάρτα */
             .demo-box {
-                margin-top: 20px;
-                padding: 15px;
+                margin-top: 10px;
+                padding: 8px 10px;
                 background-color: rgba(0, 0, 0, 0.05);
                 border: 1px dashed #777;
                 border-radius: 8px;
-                font-size: 14px;
+                font-size: 12px;
                 text-align: left;
             }
             .demo-box h4 {
                 margin-top: 0;
-                margin-bottom: 10px;
+                margin-bottom: 4px;
                 text-align: center;
-                font-size: 16px;
+                font-size: 13px;
             }
             .demo-btn {
                 display: block;
                 width: 100%;
-                margin-bottom: 8px;
-                padding: 8px;
-                background-color: #fff;
+                margin-bottom: 5px;
+                padding: 5px 8px;
+                background-color: transparent; 
                 border: 1px solid #ccc;
                 border-radius: 4px;
                 cursor: pointer;
                 text-align: left;
-                transition: background-color 0.2s;
+                font-size: 11px;
+                transition: transform 0.2s, opacity 0.2s;
             }
             .demo-btn:hover {
-                background-color: #e9e9e9;
+                transform: scale(1.01);
+                opacity: 0.9;
             }
         </style>
      </head>
@@ -86,16 +99,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <body>
         <div class="login">
             <h2>Σύνδεση</h2>
+            
+            <div style="min-height: 18px; color: #ff4c4c; text-align: center; font-size: 12px; font-weight: bold; margin-bottom: 4px;">
+                <?php echo $error_msg; ?>
+            </div>
+
             <form id="Login" name="Login" method="POST"> 
                 <input type="text" id="username" name="username" placeholder="Όνομα Χρήστη" required>
                 <input type="password" id="password" name="password" placeholder="Κωδικός" required>
                 <button type="submit">Είσοδος</button>
             </form>
 
-            <!-- 💡 DEMO ACCOUNTS BOX -->
             <div class="demo-box">
                 <h4>🎓 Demo Access (RBAC)</h4>
-                <p style="text-align: center; margin-bottom: 10px; color: #555; font-size: 12px;">Click a role to auto-fill credentials:</p>
+                <p style="text-align: center; margin-top: 2px; margin-bottom: 5px; color: #555; font-size: 11px;">Click a role to auto-fill credentials:</p>
                 
                 <button type="button" class="demo-btn" onclick="fillCredentials('student_demo', '1234')">
                     👨‍🎓 <b>Student:</b> student_demo
@@ -109,9 +126,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
             
         </div>
-        <p style="position: fixed; bottom: 0; width: 100%; text-align: center;"><b>2024-2025 - Προγραμματισμός & Συστήματα στον Παγκόσμιο Ιστό</b></p>
         
-        <!-- 💡 SCRIPT FOR AUTO-FILL -->
+        <p style="position: fixed; bottom: 0; width: 100%; text-align: center; margin: 0; padding: 10px 0; font-size: 12px;">
+            <b>2024-2025 - Προγραμματισμός & Συστήματα στον Παγκόσμιο Ιστό</b>
+        </p>
+        
         <script>
             function fillCredentials(user, pass) {
                 document.getElementById('username').value = user;
