@@ -23,7 +23,7 @@ uploads/*
 !uploads/.gitkeep
 
 # 5. Ευαίσθητα Αρχεία (Κωδικοί & Βάση Δεδομένων)
-connection.php
+# connection.php
 new.sql
 
 # 6. Αρχεία με πιθανά προσωπικά δεδομένα
