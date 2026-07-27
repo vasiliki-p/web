@@ -6,6 +6,8 @@ RUN docker-php-ext-install mysqli pdo pdo_mysql
 # Ενεργοποίηση του mod_rewrite του Apache
 RUN a2enmod rewrite
 
+RUN ln -s /etc/secrets/connection.php /var/www/html/connection.php
+
 # Αντιγραφή όλων των αρχείων του project σου (από το GitHub) στον server του Render
 COPY . /var/www/html/
 
