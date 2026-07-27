@@ -1,20 +1,21 @@
 <?php 
 session_start();
 include 'connection.php';
-
-$error_msg = ""; // Αρχικοποιούμε μια άδεια μεταβλητή για το λάθος
  
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['username'],$_POST['password'])){
         $username = $_POST['username'];
         $password = $_POST['password'];
 
+        // Ερώτημα για έλεγχο εάν ο χρήστης υπάρχει ήδη στη βάση
         $stmt = $conn->prepare("SELECT * FROM users WHERE username=? ");
         $stmt->bind_param("s", $username);
         $stmt->execute();
         $result = $stmt->get_result();
         
+        // Εισαγωγή στοιχείων χρήστη αν δεν υπάρχει ήδη
         if ($result->num_rows > 0) {
+            // Υπάρχει εγγραφή με αυτό το όνομα χρήστη
             $user = $result->fetch_assoc();
             $user_id = $user['user_id'];
             $stored_password = $user['password']; 
@@ -33,10 +34,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 }
                 exit();
             } else {
-                $error_msg = "Λανθασμένο όνομα χρήστη ή κωδικός"; // Αποθήκευση αντί για echo
+                echo "<div style='color: red; text-align: center; margin-top: 10px;'>Λανθασμένο όνομα χρήστη ή λανθασμένος κωδικός πρόσβασης</div>";
             }
         } else {
-            $error_msg = "Ο χρήστης δεν υπάρχει"; // Αποθήκευση αντί για echo
+            echo "<div style='color: red; text-align: center; margin-top: 10px;'>Ο χρήστης δεν υπάρχει</div>";
         }
     }
 }
@@ -48,6 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <title>Login - Thesis Management</title>
         <link rel="stylesheet" href="style.css">
         <style>
+            /* Extra styles for the demo accounts box */
             .demo-box {
                 margin-top: 20px;
                 padding: 15px;
@@ -68,16 +70,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 width: 100%;
                 margin-bottom: 8px;
                 padding: 8px;
-                background-color: transparent; 
+                background-color: #fff;
                 border: 1px solid #ccc;
                 border-radius: 4px;
                 cursor: pointer;
                 text-align: left;
-                transition: transform 0.2s, opacity 0.2s;
+                transition: background-color 0.2s;
             }
             .demo-btn:hover {
-                transform: scale(1.02);
-                opacity: 0.9;
+                background-color: #e9e9e9;
             }
         </style>
      </head>
@@ -85,18 +86,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <body>
         <div class="login">
             <h2>Σύνδεση</h2>
-            
-            <!-- 💡 Το σταθερό "αόρατο" κουτάκι για τα λάθη -->
-            <div style="min-height: 24px; color: #ff4c4c; text-align: center; font-size: 13px; font-weight: bold; margin-bottom: 10px;">
-                <?php echo $error_msg; ?>
-            </div>
-
             <form id="Login" name="Login" method="POST"> 
                 <input type="text" id="username" name="username" placeholder="Όνομα Χρήστη" required>
                 <input type="password" id="password" name="password" placeholder="Κωδικός" required>
                 <button type="submit">Είσοδος</button>
             </form>
 
+            <!-- 💡 DEMO ACCOUNTS BOX -->
             <div class="demo-box">
                 <h4>🎓 Demo Access (RBAC)</h4>
                 <p style="text-align: center; margin-bottom: 10px; color: #555; font-size: 12px;">Click a role to auto-fill credentials:</p>
@@ -115,6 +111,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
         <p style="position: fixed; bottom: 0; width: 100%; text-align: center;"><b>2024-2025 - Προγραμματισμός & Συστήματα στον Παγκόσμιο Ιστό</b></p>
         
+        <!-- 💡 SCRIPT FOR AUTO-FILL -->
         <script>
             function fillCredentials(user, pass) {
                 document.getElementById('username').value = user;
