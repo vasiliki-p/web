@@ -9,8 +9,8 @@ RUN a2enmod rewrite
 # Αντιγραφή όλων των αρχείων του project σου (από το GitHub) στον server του Render
 COPY . /var/www/html/
 
-# Ρύθμιση δικαιωμάτων ώστε η εφαρμογή να μπορεί να ανεβάζει σωστά τα PDF στον φάκελο uploads
-RUN chown -R www-data:www-data /var/www/html/uploads \
+RUN mkdir -p /var/www/html/uploads \
+    && chown -R www-data:www-data /var/www/html/uploads \
     && chmod -R 755 /var/www/html/uploads
-
+    
 EXPOSE 80
